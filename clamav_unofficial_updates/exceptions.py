@@ -18,14 +18,17 @@
 """
 clamav-unofficial-updates: ClamAV third party signature updates library
 
-Copyright 2015, Andrew Colin Kissa
-Licensed under AGPLv3+
+Exceptions
 """
 
-# pylint: disable=bad-builtin
-VER = (0, 0, 1)
-__author__ = "Andrew Colin Kissa"
-__copyright__ = u"© 2015 Andrew Colin Kissa"
-__email__ = "andrew@topdog.za.net"
-__description__ = "ClamAV third party signature updates library"
-__version__ = ".".join(map(str, VER))
+
+class ClamAVUUError(Exception):
+    """ClamAVUUError Exceptions"""
+    def __init__(self, message):
+        """Init"""
+        super(ClamAVUUError, self).__init__(message)
+
+
+class ClamAVUUCfgError(ClamAVUUError):
+    """Configuration Exceptions"""
+    pass

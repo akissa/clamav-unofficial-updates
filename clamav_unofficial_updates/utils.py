@@ -18,14 +18,23 @@
 """
 clamav-unofficial-updates: ClamAV third party signature updates library
 
-Copyright 2015, Andrew Colin Kissa
-Licensed under AGPLv3+
+Utility functions
 """
+from __future__ import print_function
 
-# pylint: disable=bad-builtin
-VER = (0, 0, 1)
-__author__ = "Andrew Colin Kissa"
-__copyright__ = u"© 2015 Andrew Colin Kissa"
-__email__ = "andrew@topdog.za.net"
-__description__ = "ClamAV third party signature updates library"
-__version__ = ".".join(map(str, VER))
+import sys
+
+
+def error(msg):
+    """print to stderr"""
+    print(msg, file=sys.stderr)
+
+
+def info(msg):
+    """print to stdout"""
+    print(msg, file=sys.stdout)
+
+
+def read_config(filename):
+    """Process configuration file"""
+    pass
