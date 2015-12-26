@@ -32,3 +32,13 @@ class ClamAVUUError(Exception):
 class ClamAVUUCfgError(ClamAVUUError):
     """Configuration Exceptions"""
     pass
+
+
+class ClamAVUUDownloadError(ClamAVUUError):
+    """Download Exceptions"""
+    pass
+
+
+class ClamAVUUNameError(ClamAVUUError):
+    """Download Exceptions"""
+    pass

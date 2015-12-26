@@ -22,7 +22,12 @@ Utility functions
 """
 from __future__ import print_function
 
+import os
 import sys
+import logging
+import subprocess
+
+import yaml
 
 
 def error(msg):
@@ -37,4 +42,38 @@ def info(msg):
 
 def read_config(filename):
     """Process configuration file"""
-    pass
+    with open(filename) as handle:
+        config = yaml.safe_load(handle)
+    return config
+
+
+def run_cmd(cmd):
+    """Run a command"""
+    pipe = subprocess.Popen(
+        cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    output = pipe.communicate()[0]
+    ret_val = pipe.wait()
+    if ret_val != 0:
+        try:
+            output = pipe.communicate()[1]
+        except ValueError:
+            if not output:
+                output = 'Unknown Error'
+        raise SystemError(output.strip())
+    # return ret_val
+
+
+def setup_logging(logfile, loglevel='info'):
+    """Setup logging"""
+    # pylint: disable-msg=W0212
+    log = logging.getLogger()
+    level = logging._levelNames.get(loglevel.upper(), None)
+    formatter = logging.Formatter('%(asctime)s %(message)s')
+    console_logger = logging.StreamHandler(sys.stdout)
+    console_logger.setFormatter(formatter)
+    if os.path.isdir(os.path.dirname(logfile)):
+        file_logger = logging.FileHandler(logfile)
+        file_logger.setFormatter(formatter)
+        log.addHandler(file_logger)
+    log.addHandler(console_logger)
+    log.setLevel(level)

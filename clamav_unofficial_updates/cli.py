@@ -24,7 +24,7 @@ import os
 
 from optparse import OptionParser
 
-from clamav_unofficial_updates.utils import read_config
+from clamav_unofficial_updates.utils import read_config, setup_logging
 from clamav_unofficial_updates.exceptions import ClamAVUUCfgError
 
 
@@ -36,7 +36,7 @@ def main():
         help='configuration file',
         dest='filename',
         type='str',
-        default='/etc/clamav-unofficial-updates/clamav-unofficial-updates.conf')
+        default='/etc/clamav-unofficial-updates/clamav-updates.conf')
     parser.add_option(
         '-d', '--decode',
         help='Decode a signature',
@@ -101,5 +101,9 @@ def main():
                 "The configuration file: %s does not exist" %
                 options.filename)
         config = read_config(options.filename)
+        log_file = config.get('log-file',
+            '/var/log/clamav-unofficial-updates/updates.log')
+        log_level = config.get('log-level')
+        setup_logging(log_file, log_level)
     except BaseException as msg:
         error(msg)
