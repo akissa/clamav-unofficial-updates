@@ -28,7 +28,7 @@ from imp import load_source
 from setuptools import setup, find_packages
 
 TESTS_REQUIRE = ['nose', 'coverage', 'mock']
-INSTALL_REQUIRES = []
+INSTALL_REQUIRES = ['PyYAML']
 
 if sys.version_info < (2, 7):
     TESTS_REQUIRE.extend(['unittest2'])
@@ -58,8 +58,8 @@ def main():
     lic = (
         'License :: OSI Approved :: GNU Affero '
         'General Public License v3 or later (AGPLv3+)')
-    version = load_source("version",
-        os.path.join("clamav_unofficial_updates", "__init__.py"))
+    version = load_source(
+        "version", os.path.join("clamav_unofficial_updates", "__init__.py"))
 
     opts = dict(
         name="clamav-unofficial-updates",
