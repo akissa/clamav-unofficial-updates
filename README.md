@@ -6,7 +6,7 @@
 This package provides a simple way to create, download, test, and update ClamAV
 third-party signature databases
 
-[![Build Status](https://travis-ci.org/akissa/clamav-unofficial-updates.svg)](https://travis-ci.org/akissa/clamav-unofficial-updates)
+[![Build Status](https://travis-ci.org/akissa/clamav-unofficial-updates.svg?branch=master)](https://travis-ci.org/akissa/clamav-unofficial-updates)
 [![Code Climate](https://codeclimate.com/github/akissa/clamav-unofficial-updates/badges/gpa.svg)](https://codeclimate.com/github/akissa/clamav-unofficial-updates)
 [![License](https://img.shields.io/badge/license-AGPLv3%2B-blue.svg)](https://github.com/akissa/clamav-unofficial-updates/blob/master/LICENSE)
 
